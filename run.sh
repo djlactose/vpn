@@ -3,7 +3,8 @@ if [ ! "$BASH_VERSION" ] ; then
     exec /bin/bash "$0" "$@"
 fi
 cd /etc/openvpn
-if [ -f "/etc/openvpn/pki/dh.pem" ] then
+if [ -f "/etc/openvpn/pki/dh.pem" ];
+then
   echo got here
 else
   /usr/share/easy-rsa/easyrsa init-pki
