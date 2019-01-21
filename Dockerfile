@@ -8,9 +8,14 @@ EXPOSE 1194/udp
 
 VOLUME /etc/openvpn
 
+COPY run.sh /root/bin/run.sh
+COPY new_cert.sh /root/bin/new_cert.sh
+
 WORKDIR /etc/openvpn
 
-RUN apk add --no-cache --update openvpn easy-rsa && \
-/usr/share/easy-rsa/easyrsa init-pki && \
-echo $servername | /usr/share/easy-rsa/easyrsa build-ca nopass && \
-/usr/share/easy-rsa/easyrsa gen-dh
+RUN apk add --no-cache --update bash openvpn easy-rsa && \
+chmod 700 /root/bin/run.sh && \
+chmod 700 /root/bin/new_cert.sh
+
+CMD "/bin/bash"
+#ENTRYPOINT "/root/bin/run.sh"
