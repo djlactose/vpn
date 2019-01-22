@@ -7,8 +7,11 @@ if [ -f "/etc/openvpn/pki/dh.pem" ];
 then
   echo got here
 else
+  mkdir /dev/net
+  mknod /dev/net/tun c 10 200
+  chmod 0666 /dev/net/tun
   /usr/share/easy-rsa/easyrsa init-pki
   echo $servername | /usr/share/easy-rsa/easyrsa build-ca nopass
-  echo test2 | /usr/share/easy-rsa/easyrsa gen-req test2 nopass
+  /root/bin/new_client.sh me
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
