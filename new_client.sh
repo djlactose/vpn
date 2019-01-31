@@ -8,3 +8,4 @@ echo yes | /usr/share/easy-rsa/easyrsa sign-req client $1
 echo Private Key:  /etc/openvpn/pki/private/$1.key
 echo Cert:  /etc/openvpn/pki/issued/$1.crt
 echo CA:   /etc/openvpn/pki/ca.cert
+tar -zcf /etc/openvpn/pki/$1.tgz /etc/openvpn/pki/private/$1.key /etc/openvpn/pki/issued/$1.crt /etc/openvpn/pki/ca.crt

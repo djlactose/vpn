@@ -10,6 +10,7 @@ VOLUME /etc/openvpn
 
 COPY run.sh /root/bin/run.sh
 COPY new_client.sh /root/bin/new_client.sh
+COPY server.conf /etc/openvpn/server.conf
 
 WORKDIR /etc/openvpn
 
@@ -17,4 +18,4 @@ RUN apk add --no-cache --update bash openvpn easy-rsa && \
 chmod 700 /root/bin/run.sh && \
 chmod 700 /root/bin/new_client.sh
 
-#ENTRYPOINT "/root/bin/run.sh"
+ENTRYPOINT "/root/bin/run.sh"
