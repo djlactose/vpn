@@ -16,6 +16,6 @@ WORKDIR /etc/openvpn
 
 RUN apk add --no-cache --update bash openvpn easy-rsa && \
 chmod 700 /root/bin/run.sh && \
-chmod 700 /root/bin/new_client.sh
+chmod 700 /root/bin/new_client.sh 
 
-#ENTRYPOINT "/root/bin/run.sh"
+ENTRYPOINT "/root/bin/run.sh"

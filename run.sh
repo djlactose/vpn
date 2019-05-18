@@ -5,7 +5,7 @@ fi
 cd /etc/openvpn
 if [ -f "/etc/openvpn/pki/dh.pem" ];
 then
-  echo got here
+  echo Server already built starting OpenVPN...
 else
   mkdir /dev/net
   mknod /dev/net/tun c 10 200
@@ -15,3 +15,4 @@ else
   /root/bin/new_client.sh me
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
+openvpn --config /etc/openvpn/server.conf --log-append /dev/stdout
