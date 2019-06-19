@@ -16,3 +16,7 @@ else
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
 openvpn --config /etc/openvpn/server.conf --log-append /dev/stdout
+while [ $(ps -ef|grep -c openvpn) -gt 0 ];
+do
+  sleep 1
+done
