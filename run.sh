@@ -12,7 +12,7 @@ else
   chmod 0666 /dev/net/tun
   /usr/share/easy-rsa/easyrsa init-pki
   echo $servername | /usr/share/easy-rsa/easyrsa build-ca nopass
-  /root/bin/new_client.sh me
+  /usr/share/easy-rsa/easyrsa build-server-full me nopass
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
 openvpn --config /etc/openvpn/server.conf --log-append /dev/stdout
