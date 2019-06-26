@@ -7,6 +7,7 @@ if [ -f "/etc/openvpn/pki/dh.pem" ];
 then
   echo Server already built starting OpenVPN...
 else
+  mkdir /etc/openvpn/certPacks
   mkdir /dev/net
   mknod /dev/net/tun c 10 200
   chmod 0666 /dev/net/tun

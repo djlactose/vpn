@@ -15,7 +15,6 @@ COPY server.conf /etc/openvpn/server.conf
 WORKDIR /etc/openvpn
 
 RUN apk add --no-cache --update bash openvpn easy-rsa && \
-mkdir /etc/openvpn/certPacks && \
 chmod 700 /root/bin/run.sh && \
 chmod 700 /root/bin/new_client.sh 
 
