@@ -9,4 +9,10 @@ cd /etc/openvpn
 echo Private Key:  /etc/openvpn/pki/private/$1.key
 echo Cert:  /etc/openvpn/pki/issued/$1.crt
 echo CA:   /etc/openvpn/pki/ca.cert
-tar -zcf /etc/openvpn/certPacks/$1.tgz -C /etc/openvpn/pki/private/ $1.key -C /etc/openvpn/pki/issued/ $1.crt -C /etc/openvpn/pki/ ca.crt
+cp /etc/openvpn/pki/private/$1.key /etc/openvpn/
+cp /etc/openvpn/pki/issued/$1.crt /etc/openvpn/
+cp /etc/openvpn/pki/ca.crt /etc/openvpn
+tar -zcf /etc/openvpn/certPacks/$1.tgz -C /etc/openvpn/ $1.key $1.crt ca.crt
+rm /etc/openvpn/$1.key
+rm /etc/openvpn/$1.crt
+rm /etc/openvpn/ca.crt
