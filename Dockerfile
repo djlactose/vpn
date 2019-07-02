@@ -11,6 +11,7 @@ VOLUME /etc/openvpn
 COPY run.sh /root/bin/run.sh
 COPY new_client.sh /root/bin/new_client.sh
 COPY server.conf /etc/openvpn/server.conf
+COPY client.ovpn /etc/openvpn/client.ovpn
 
 WORKDIR /etc/openvpn
 

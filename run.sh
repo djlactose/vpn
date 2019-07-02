@@ -8,14 +8,14 @@ then
   echo Server already built starting OpenVPN...
 else
   mkdir /etc/openvpn/certPacks
-  mkdir /dev/net
-  mknod /dev/net/tun c 10 200
-  chmod 0666 /dev/net/tun
   /usr/share/easy-rsa/easyrsa init-pki
   echo $servername | /usr/share/easy-rsa/easyrsa build-ca nopass
   /usr/share/easy-rsa/easyrsa build-server-full me nopass
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
+mkdir /dev/net
+mknod /dev/net/tun c 10 200
+chmod 0666 /dev/net/tun
 openvpn --config /etc/openvpn/server.conf --log-append /dev/stdout
 while [ $(ps -ef|grep -c openvpn) -gt 0 ];
 do

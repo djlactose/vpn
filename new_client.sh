@@ -12,7 +12,7 @@ echo CA:   /etc/openvpn/pki/ca.cert
 cp /etc/openvpn/pki/private/$1.key /etc/openvpn/
 cp /etc/openvpn/pki/issued/$1.crt /etc/openvpn/
 cp /etc/openvpn/pki/ca.crt /etc/openvpn
-tar -zcf /etc/openvpn/certPacks/$1.tgz -C /etc/openvpn/ $1.key $1.crt ca.crt
+tar -zcf /etc/openvpn/certPacks/$1.tgz -C /etc/openvpn/ $1.key $1.crt ca.crt client.ovpn
 rm /etc/openvpn/$1.key
 rm /etc/openvpn/$1.crt
 rm /etc/openvpn/ca.crt
