@@ -13,6 +13,7 @@ else
   /usr/share/easy-rsa/easyrsa build-server-full me nopass
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
+sed -i "s#:::REPLACE:::#$servername#g" /etc/openvpn/client.ovpn
 mkdir /dev/net
 mknod /dev/net/tun c 10 200
 chmod 0666 /dev/net/tun
