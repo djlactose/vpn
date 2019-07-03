@@ -16,6 +16,7 @@ COPY client.ovpn /etc/openvpn/client.ovpn
 WORKDIR /etc/openvpn
 
 RUN apk add --no-cache --update bash openvpn easy-rsa && \
+echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf && \
 chmod 700 /root/bin/run.sh && \
 chmod 700 /root/bin/new_client.sh 
 
