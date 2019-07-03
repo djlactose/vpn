@@ -2,17 +2,18 @@
 if [ ! "$BASH_VERSION" ] ; then
     exec /bin/bash "$0" "$@"
 fi
+read -p "Please enter the device: " device
 cd /etc/openvpn
-/usr/share/easy-rsa/easyrsa build-client-full $1 nopass
-#echo $1 | /usr/share/easy-rsa/easyrsa gen-req $1 nopass
-#echo yes | /usr/share/easy-rsa/easyrsa sign-req client $1
-echo Private Key:  /etc/openvpn/pki/private/$1.key
-echo Cert:  /etc/openvpn/pki/issued/$1.crt
+/usr/share/easy-rsa/easyrsa build-client-full $device nopass
+#echo $device | /usr/share/easy-rsa/easyrsa gen-req $device nopass
+#echo yes | /usr/share/easy-rsa/easyrsa sign-req client $device
+echo Private Key:  /etc/openvpn/pki/private/$device.key
+echo Cert:  /etc/openvpn/pki/issued/$device.crt
 echo CA:   /etc/openvpn/pki/ca.cert
-cp /etc/openvpn/pki/private/$1.key /etc/openvpn/
-cp /etc/openvpn/pki/issued/$1.crt /etc/openvpn/
+cp /etc/openvpn/pki/private/$device.key /etc/openvpn/
+cp /etc/openvpn/pki/issued/$device.crt /etc/openvpn/
 cp /etc/openvpn/pki/ca.crt /etc/openvpn
-tar -zcf /etc/openvpn/certPacks/$1.tgz -C /etc/openvpn/ $1.key $1.crt ca.crt client.ovpn
-rm /etc/openvpn/$1.key
-rm /etc/openvpn/$1.crt
+tar -zcf /etc/openvpn/certPacks/$device.tgz -C /etc/openvpn/ $device.key $device.crt ca.crt client.ovpn
+rm /etc/openvpn/$device.key
+rm /etc/openvpn/$device.crt
 rm /etc/openvpn/ca.crt
