@@ -16,8 +16,11 @@ fi
 mkdir /dev/net
 mknod /dev/net/tun c 10 200
 chmod 0666 /dev/net/tun
+iptables -I FORWARD -i tun0 -o eth0 -s 10.10.20.0/24 -m conntrack --ctstate NEW -j ACCEPT
+iptables -I FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -t nat -I POSTROUTING -o eth0 -s 10.10.20.0/24 -j MASQUERADE
 openvpn --config /etc/openvpn/server.conf --log-append /dev/stdout
-while [ $(ps -ef|grep -c openvpn) -gt 0 ];
-do
-  sleep 1
-done
+#while [ $(ps -ef|grep -c openvpn) -gt 0 ];
+#do
+#  sleep 1
+#done
