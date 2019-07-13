@@ -3,8 +3,10 @@ A basic OpenVPN Docker Container which is setup to allow someone to easily spin 
 * Needs to run with --cap-add=NET_ADMIN
 ## Environmental Vars
 * servername = This is used to set the name of your server it defaults to myOpenVPNServer
+* port_type = This is used to set the if the port is UDP or TCP the default is UDP
 ## Ports
 * 1194/udp
+* 1194/tcp
 ## Persistent Storage 
 * /etc/openvpn
 ## Sample Run Command

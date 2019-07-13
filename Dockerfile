@@ -3,8 +3,10 @@ FROM alpine
 LABEL maintainer="Nick Hernandez <nickhernandez@djlactose.com>"
 
 ENV servername myOpenVPNServer
+ENV port_type udp
 
 EXPOSE 1194/udp
+EXPOSE 1194/tcp
 
 VOLUME /etc/openvpn
 

@@ -14,6 +14,7 @@ else
   /usr/share/easy-rsa/easyrsa gen-dh
 fi
 sed -i "s#:::REPLACE:::#$servername#g" /etc/openvpn/client.ovpn
+sed -i "s#proto udp#proto $port_type#g" /etc/openvpn/server.conf
 mkdir /dev/net
 mknod /dev/net/tun c 10 200
 chmod 0666 /dev/net/tun
