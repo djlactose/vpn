@@ -12,6 +12,8 @@ else
   echo $servername | /usr/share/easy-rsa/easyrsa build-ca nopass
   /usr/share/easy-rsa/easyrsa build-server-full me nopass
   /usr/share/easy-rsa/easyrsa gen-dh
+  cp /root/server.conf /etc/openvpn/server.conf
+  cp /root/client.ovpn /etc/openvpn/client.ovpn
 fi
 sed -i "s#:::REPLACE:::#$servername#g" /etc/openvpn/client.ovpn
 sed -i "s#proto udp#proto $port_type#g" /etc/openvpn/server.conf
